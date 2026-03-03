@@ -1,58 +1,50 @@
-const { test } = require('../lambdatest-setup')
-const { expect } = require('@playwright/test')
+const { test, expect } = require('@playwright/test');
 
-test.describe('PlayWright Vanilla JS - 3', () => {
-  test('Navigate PlayWright Documentation', async ({ page }) => {
-    await page.setViewportSize({ width: 1920, height: 1080 });
-    await page.goto('https://playwright.dev/');
-    await expect(page).toHaveTitle(/Playwright/);
-    await expect(page.locator('text=Get Started').first()).toHaveAttribute('href', '/docs/intro');
-    await page.click('text=Get Started');
-    await expect(page.locator('text=Installation').first()).toBeVisible();
-    await page.click('text=Trace Viewer');
-    await page.click('text=Test Generator');
-    await page.click('text=Release notes');
-    await page.click('text=Annotations');
-    await page.click('text=API testing');
-    await page.click('text=Authentication');
-    await page.click('text=Command line');
-    await page.click('text=Configuration');
-    await page.click('text=Page Object Model');
-    await page.click('text=Parameterize tests');
-    await page.click('text=Reporters');
-    await page.click('text=Retries');
-    await page.click('text=Timeouts');
-    await page.click('text=Visual comparisons');
-    await page.click('text=Fixtures');
-    await page.click('text=TypeScript');
-    await page.click('text=Components (experimental)');
-    await page.click('text=Library');
-    await page.click('text=Auto-waiting');
-    await page.click('text=Authentication');
-    await page.click('text=Browsers');
-    await page.click('text=Chrome Extensions');
-    await page.click('text=Command line');
-    await page.click('text=Dialogs');
-    await page.click('text=Downloads');
-    await page.click('text=Emulation');
-    await page.click('text=Evaluating JavaScript');
-    await page.click('text=Events');
-    await page.click('text=Extensibility');
-    await page.click('text=Frames');
-    await page.click('text=Handles');
-    await page.click('text=Locators');
-    await page.click('text=Navigations');
-    await page.click('text=Network');
-    await page.click('text=Pages');
-    await page.click('text=Page Object Models');
-    await page.click('text=Screenshots');
-    await page.click('text=Videos');
-    await page.click('text=Migration');
-    await page.click('text=Migrating from Protractor');
-    await page.click('text=Integrations');
-    await page.click('text=Docker');
-    await page.click('text=Continuous Integration');
-    await page.click('text=Selenium Grid');
-    await page.click('text=Supported languages');
-  })
-})
+test('Test Scenario 3 - Input Form Submit', async ({ page }) => {
+     test.setTimeout(1200000); // 120 seconds
+
+  await page.goto('https://www.testmuai.com/selenium-playground/');
+  await page.waitForTimeout(3000); // 
+
+  await page.getByText('Input Form Submit').click();
+await page.waitForTimeout(3000); // 
+  // Submit empty form
+  await page.getByRole('button', { name: 'Submit' }).click();
+await page.waitForTimeout(3000); // 
+  await expect(page.locator('#name')).toHaveAttribute('required', '');
+await page.waitForTimeout(3000); // 
+  // Fill form
+  await page.fill('#name', 'Ajay Tester');
+  await page.waitForTimeout(3000); // 
+  await page.fill('#inputEmail4', 'ajay@test.com');
+  await page.waitForTimeout(3000); // 
+  await page.fill('#inputPassword4', 'Password123');
+  await page.waitForTimeout(3000); // 
+  await page.fill('#company', 'TestMu AI');
+  await page.waitForTimeout(3000); // 
+  await page.fill('#websitename', 'https://test.com');
+  await page.waitForTimeout(3000); // 
+
+  await page.selectOption('select[name="country"]', {
+    label: 'United States'
+  });
+await page.waitForTimeout(3000); // 
+  await page.fill('#inputCity', 'New York');
+  await page.waitForTimeout(3000); // 
+  await page.fill('#inputAddress1', 'Street 1');
+  await page.waitForTimeout(3000); // 
+  await page.fill('#inputAddress2', 'Street 2');
+  await page.waitForTimeout(3000); // 
+  await page.fill('#inputState', 'NY');
+  await page.waitForTimeout(3000); // 
+  await page.fill('#inputZip', '10001');
+  await page.waitForTimeout(3000); // 
+
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.waitForTimeout(3000); // 
+
+  await expect(
+    page.getByText('Thanks for contacting us, we will get back to you shortly.')
+  ).toBeVisible();
+
+});
