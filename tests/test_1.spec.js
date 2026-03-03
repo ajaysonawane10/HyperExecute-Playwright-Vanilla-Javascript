@@ -1,9 +1,10 @@
-const { test, expect } = require('@playwright/test');
+const { test } = require('../lambdatest-setup')
+const { expect } = require('@playwright/test')
 
-test('Test Scenario 1 - Simple Form Demo', async ({ page }) => {
-   
-
-  const message = 'Welcome to TestMu AI';
+test.describe('PlayWright Vanilla JS - 1', () => {
+  test('Test Scenario 1 - Simple Form Demo', async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    const message = 'Welcome to TestMu AI';
 
   await page.goto('https://www.testmuai.com/selenium-playground/');
   await page.waitForTimeout(3000); // 
@@ -22,4 +23,5 @@ test('Test Scenario 1 - Simple Form Demo', async ({ page }) => {
 
   await expect(page.locator('#message')).toHaveText(message);
   
-});
+  })
+})
