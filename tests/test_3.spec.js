@@ -1,7 +1,10 @@
-const { test, expect } = require('@playwright/test');
+const { test } = require('../lambdatest-setup')
+const { expect } = require('@playwright/test')
 
-test('Test Scenario 3 - Input Form Submit', async ({ page }) => {
-     test.setTimeout(1200000); // 120 seconds
+test.describe('PlayWright Vanilla JS - 4', () => {
+  test('Test Scenario 3 - Input Form Submit', async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    test.setTimeout(1200000); // 120 seconds
 
   await page.goto('https://www.testmuai.com/selenium-playground/');
   await page.waitForTimeout(3000); // 
@@ -47,4 +50,5 @@ await page.waitForTimeout(3000); //
     page.getByText('Thanks for contacting us, we will get back to you shortly.')
   ).toBeVisible();
 
-});
+  })
+})
