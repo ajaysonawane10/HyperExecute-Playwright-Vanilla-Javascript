@@ -28,12 +28,12 @@ const config = {
     //     viewport: { width: 1280, height: 720 }
     //   }
     // },
-    // {
-    //   name: 'pw-firefox:latest@lambdatest',
-    //   use: {
-    //     viewport: { width: 1280, height: 720 }
-    //   }
-    // },
+     {
+       name: 'pw-firefox:latest@lambdatest',
+       use: {
+         viewport: { width: 1280, height: 720 }
+       }
+     }
     // {
     //   name: 'pw-webkit:latest@lambdatest',
     //   use: {
